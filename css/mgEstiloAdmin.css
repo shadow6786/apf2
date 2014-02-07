@@ -1,0 +1,66 @@
+body {font: 62.5% "Trebuchet MS", sans-serif; }
+#titulo_pagina{ font-size:x-large; font-weight:bold; color:#ffaf0f; padding-top:5px; float:left }
+img{ border:none;}
+p{font-size:12px;}
+a{ color:#063223}
+a:hover{ color:#333}
+/*Record Sets*/
+.rs{ font-family: Verdana, Geneva, Arial, helvetica, sans-serif;}
+.rs_fila_nombrecolumna{ font-weight:bolder;  color:#ffaf0f; text-align:left; padding:8px; font-size:11px; height:14px;}
+.rs_filas{border-bottom:1px dotted black; padding: 4px 8px 4px 8px;  font-size:14px; }
+.rs_fila_editar{border-bottom:1px dotted black;  padding-right:8px; padding-left:4px;  font-size:14px; width:1%; text-align:center}
+.rs_filas_eliminar{border-bottom:1px dotted black; padding-right:8px; padding-left:4px; font-size:14px; width:1%; text-align:center} 
+.rs_fila_titulo_form{ font-weight:bolder; background-color:#666666; color:#FFFFFF;  font-size:12px; padding:8px}
+.rs_fila_nombrecolumna_form{   border-bottom:1px dotted black; padding-left:8px;  font-size:12px; font-weight:bold;  padding:10px; vertical-align:middle}
+.rs_filas_campo_form{  border-bottom:1px dotted black; padding-left:8px;  font-size:14px; vertical-align:middle}
+/*Total Regsitros*/
+#sector_totalregistros{ font-weight: bold; color: #1f4933; font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1.1em; float:right;padding:8px }
+/*Filtros*/
+#boton_filtro {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+#boton_filtro span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+#sector_filtros{ font-size:12px; }
+.form_filtrar{width:100%;}
+.table_filtro{font-size:12px;}
+/*Tablas*/
+.table_lista{ text-align:left; table-layout:fixed; }
+.table_agregar{ width:100%; clear:both; font: 62.5% "Trebuchet MS", sans-serif; }
+.table_editar{  width:100%; clear:both; font: 62.5% "Trebuchet MS", sans-serif;  }
+
+/*botones*/
+.boton_paginacion { padding-top:2px; padding-bottom:2px;  background-color:#333; margin-right:2px; color:#FFF}
+.boton_paginacion_actual { padding-top:2px; padding-bottom:2px; background-color:#333; margin-right:2px; color:#FFF}
+
+#opcionesmenu_registros{ float:right; padding-bottom:5px; font-size:10px}
+#opcionesmenu_registros .dialog_link { padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+#opcionesmenu_registros .dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+.boton_insertar{ background:none; border:none; height:100%; cursor:pointer} 
+
+
+#paginacion{width:90%;}
+#numeroregistros{ font-size:12px; float:right}
+#filtro{ clear:both}
+
+#dialog_link { font: 62.5%; padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+ul#icons {margin: 0; padding: 0;}
+ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+ul#icons span.ui-icon {float: left; margin: 0 4px;}
+			
+#boton_editar{ font: 9px; padding: 0px 0px 0px 15px; text-decoration: none;position: relative;}
+#boton_editar span {margin: 0 2px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+
+#boton_borrar{ font: 9px; padding: 0px 0px 0px 15px; text-decoration: none;position: relative;}
+#boton_borrar span {margin: 0 2px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+
+/* Mensajes de Error de cada input*/
+label.error { color: red; }
+.error { color: red; }
+/* mensaje error de inserción llave fk*/
+.ui-widget { clear:both;  }
+.ui-state-error{margin-top:10px}
+
+/*multiseelct*/
+	.multiselect {	
+			height:250px;
+			width:350px;
+		}

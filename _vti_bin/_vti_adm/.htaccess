@@ -1,0 +1,18 @@
+# -FrontPage-
+
+Options +FollowSymlinks
+
+<Limit GET POST>
+order deny,allow
+deny from all
+allow from all
+require group administrators
+</Limit>
+<Limit PUT DELETE>
+order deny,allow
+deny from all
+</Limit>
+AuthType Passthrough
+AuthName apf-alemansc.com.bo/apf2
+AuthUserFile /home/a1692580/public_html/apf2/_vti_pvt/service.pwd
+AuthGroupFile /home/a1692580/public_html/apf2/_vti_pvt/service.grp

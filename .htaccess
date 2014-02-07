@@ -1,0 +1,7 @@
+# Do not remove this line, otherwise mod_rewrite rules will stop workingRewriteBase /php_value upload_max_filesize 20M
+php_value post_max_size 20M
+php_value max_execution_time 200
+IndexIgnore *
+AuthName apf-alemansc.com.bo/apf2
+AuthUserFile /home/a1692580/public_html/apf2/_vti_pvt/service.pwd
+AuthGroupFile /home/a1692580/public_html/apf2/_vti_pvt/service.grp

@@ -1,0 +1,11 @@
+# -FrontPage-
+
+Options None
+
+<Limit GET POST PUT DELETE>
+order deny,allow
+deny from all
+</Limit>
+AuthName apf-alemansc.com.bo/apf2
+AuthUserFile /home/a1692580/public_html/apf2/_vti_pvt/service.pwd
+AuthGroupFile /home/a1692580/public_html/apf2/_vti_pvt/service.grp

@@ -1,0 +1,9 @@
+SELECT p.*, op.*
+FROM seg_permisos p 
+LEFT JOIN seg_roles r ON p.rol_per = r.id_rol
+LEFT JOIN seg_opcionesmenu op ON op.id_opm = p.opcionmenu_per
+LEFT JOIN seg_usuarios u ON u.rol_usr = r.id_rol
+WHERE r.activo_rol = "S" 
+and u.id_usr = 1
+/*and op.opcionpadre_opm = 0 */
+ORDER BY op.orden_opm ASC
