@@ -1,7 +1,7 @@
 <?php
-require_once("circulares.class.php");
+require_once("directorios.class.php");
 
-class ccirculares_ext extends ccirculares
+class cdirectorios_ext extends cdirectorios
 {
 	public function __construct()
     {
@@ -19,7 +19,7 @@ class ccirculares_ext extends ccirculares
 			$var["nombrevariable"];
 		*/
 		
-		$sql = "SELECT * FROM smc_circulares";
+		$sql = "SELECT * FROM smc_directorios";
    		$rs = mysql_query($sql);
 		$total_filas = mysql_num_rows($rs);
 			
@@ -50,48 +50,12 @@ class ccirculares_ext extends ccirculares
 	   }
     }
 
-    public function get_circulares_tipo($var)
+	public function get_directorio_gestion()
     {
        try
 	   {
-
-		$sql = "SELECT *
-		FROM smc_circulares where tipocircular_crc = ".$var;
-   		$rs = mysql_query($sql);
-		$total_filas = mysql_num_rows($rs);
-			
-                        $res = array();
-                        
-                        if($total_filas > 0)
-                        {
-                            $row = mysql_fetch_assoc($rs);
-
-                            do{
-                                $res[] = $row;
-                            }while($row = mysql_fetch_assoc($rs));
-                        }
-                        $this->totalfilas = $total_filas;
-                        $this->totalfilasfiltradas = $total_filas;
-                        
-                        return $res;
-                        
-            if ($total_filas == 0) 
-			{ 
-				throw new Exception("no hay regsitros"); 
-   			}
-			
-	   }
-	   catch(Exception $e)
-	   {
-		   throw $e;
-	   }
-    }
-
-    public function get_circulares_gestion_tipo($gestion,$tipo)
-    {
-    	try{
-    	$sql = "SELECT *
-FROM smc_circulares where gestion_crc = ".$gestion." and tipocircular_crc = ".$tipo;
+		
+		$sql = "SELECT * FROM smc_directorios d LEFT JOIN cnf_gestiones g ON g.id_gst = d.gestion_dir ORDER BY g.nombre_gst";
    		$rs = mysql_query($sql);
 		$total_filas = mysql_num_rows($rs);
 			
@@ -127,8 +91,8 @@ FROM smc_circulares where gestion_crc = ".$gestion." and tipocircular_crc = ".$t
     {
        try
 	   {
-		$sql = "SELECT * FROM smc_circulares";
-        	$sql_total = "SELECT count(*) as cantidad_filas FROM smc_circulares"; 
+		$sql = "SELECT * FROM smc_directorios";
+        	$sql_total = "SELECT count(*) as cantidad_filas FROM smc_directorios"; 
 		$sql_filtrado = "";
 		$where = array();
 			
@@ -173,7 +137,7 @@ FROM smc_circulares where gestion_crc = ".$gestion." and tipocircular_crc = ".$t
                             $row = mysql_fetch_assoc($rs);
 
                             do{
-                                $res[$row["id_crc"]] = $row;
+                                $res[$row["id_dir"]] = $row;
                             }while($row = mysql_fetch_assoc($rs));
                         }
                         $this->totalfilas = $total_filas;

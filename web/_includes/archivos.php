@@ -62,7 +62,7 @@ if (count($arr_pag) > 0)
 					}
 					default:
 					{
-						$('#m_quienessomos').addClass('active');
+						//$('#m_quienessomos').addClass('active');
 						break;
 					}
 				}

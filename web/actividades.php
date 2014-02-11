@@ -14,7 +14,7 @@ $objgestiones = new cgestiones_ext;
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Asociacion Padres de Familia Colegio Aleman S.C.</title>
 <?php include_once("../web/_includes/archivos.php");?>
-<script type="text/javascript" src="../js/ajax_actividades.js"></script>
+<script type="text/javascript" src="../js/ajax.js"></script>
 <script>
 	$(document).ready(function(){
 		$('#gestion_act').css('margin-top','10px');

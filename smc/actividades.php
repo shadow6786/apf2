@@ -1,7 +1,7 @@
 <?php
 /*
 
-Creado En: 29/03/2013 07:45:41;
+Creado En: 11/02/2014 08:19:30;
 Creado Por: Sistema;
 Modificado Por: ;
 Modificado En: ;
@@ -50,7 +50,7 @@ if (isset($_GET['pag']))
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>actividades</title>
         <link type="text/css" href="../css/redmond/jquery-ui-1.8.14.custom.css" rel="stylesheet" />	
 		<script type="text/javascript" >
@@ -69,16 +69,11 @@ if (isset($_GET['pag']))
         <script language="JavaScript" src="../js/jquery.metadata.js"></script>
         <script language="JavaScript" src="../js/jquery.validate.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/paginacion.css" media="screen"/>
-		<script src="../js/elrte.min.js" type="text/javascript" charset="utf-8"></script>
-		<link rel="stylesheet" href="../css/elrte.min.css" type="text/css" media="screen" charset="utf-8">
-		<!-- elFinder -->
-		<link rel="stylesheet" href="../css/elfinder.css" type="text/css" media="screen" charset="utf-8" /> 
-		<script src="../js/elfinder.full.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/i18n/elrte.es.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/i18n/elfinder.es.js" type="text/javascript" charset="utf-8"></script>
+	
 		<!--TIMEPICKER-->
         <link rel="stylesheet" type="text/css" href="../css/jquery-ui-timepicker.css" media="screen"/>
         <script language="JavaScript" src="../js/jquery.ui.timepicker.js"></script>
+        
         <script type="text/javascript">
 		$(function(){
 			$('ul#icons li, #boton_editar, #boton_borrar').hover(
@@ -120,30 +115,9 @@ if (isset($_GET['pag']))
 			form.elements[campo2].value = "";
 			}
 		}
-				
+		
+		
 		$(document).ready(function(){
-			
-		var opts = {
-					cssClass : 'el-rte',
-					lang     : 'en',
-					allowSource : 1,  // allow user to view source
-					height   : 450,   // height of text area
-					toolbar  : 'normal',   // Your options here are 'tiny', 'compact', 'normal', 'complete', 'maxi', or 'custom'
-					cssfiles : ['../css/elrte-inner.css'],
-					// elFinder
-					fmAllow  : 1,
-					fmOpen : function(callback) {
-						$('<div id="myelfinder" />').elfinder({
-							url : '../connectors/php/connector.php', // elFinder configuration file.
-							lang : 'en',
-							dialog : { width : 700, modal : true, title : 'Files' }, // Open in dialog window
-							closeOnEditorCallback : true, // Close after file select
-							editorCallback : callback     // Pass callback to file manager
-						})
-					}
-					//end of elFinder
-				}
-				$('#descripcion_act').elrte(opts); // id of textarea you want rich edit on	
 
 		$('#boton_guardar_validar').click(function() {
 
@@ -220,7 +194,7 @@ if (isset($_GET['pag']))
             
     	    <tr> 
             <td class='rs_fila_nombrecolumna_form'>Nombre</td> 
-            <td class='rs_filas_campo_form'><input type='text' id='nombre_act' name='nombre_act' value='<?php echo $objactividades->nombre_act ?>' title="Requerido!" class="{required:true,minlength:1}" size='80' maxlength='150'></td>
+            <td class='rs_filas_campo_form'><input type='text' id='nombre_act' name='nombre_act' value='<?php echo $objactividades->nombre_act ?>' title="Requerido!" class="{required:true,minlength:1}" size='150' maxlength='150'></td>
         </tr> 
 
     	    <tr> 
@@ -255,7 +229,7 @@ if (isset($_GET['pag']))
 
     	    <tr> 
             <td class='rs_fila_nombrecolumna_form'>Cargar Archivo</td> 
-            <td class='rs_filas_campo_form'><input type='text' id='archivo_act' name='archivo_act' value='<?php echo $objactividades->archivo_act ?>'  size='80' maxlength='80'></td>
+            <td class='rs_filas_campo_form'><input type='file' id='archivo_act' name='archivo_act'></td>
         </tr> 
 
     	    <tr> 
@@ -274,8 +248,16 @@ if (isset($_GET['pag']))
         </tr> 
 
     	    <tr> 
-            <td class='rs_fila_nombrecolumna_form'>Descripci&oacute;n</td> 
-            <td class='rs_filas_campo_form'><textarea name="descripcion_act" cols="50" rows="10" id="descripcion_act" ><?php echo utf8_encode($objactividades->descripcion_act); ?></textarea></td>
+            <td class='rs_fila_nombrecolumna_form'>Descripción</td> 
+            <td class='rs_filas_campo_form'><textarea name="descripcion_act" cols="50" rows="10" id="descripcion_act" class="wysiwyggen"><?php echo $objactividades->descripcion_act ?></textarea> <?php include("../_UTL/wysiwyg.php"); ?>
+        
+		<script type="text/javascript">
+		$(function(){
+			
+			$('#descripcion_act').elrte(opts);
+
+                            });
+                            </script></td>
         </tr> 
 
             <tr> 
@@ -330,7 +312,7 @@ if (isset($_GET['pag']))
     
            <tr> 
             <td class='rs_fila_nombrecolumna_form'>Nombre</td> 
-            <td class='rs_filas_campo_form'><input type='text' id='nombre_act' name='nombre_act' value='' title="Requerido!" class="{required:true,minlength:1}" size='80' maxlength='80'></td>
+            <td class='rs_filas_campo_form'><input type='text' id='nombre_act' name='nombre_act' value='' title="Requerido!" class="{required:true,minlength:1}" size='150' maxlength='150'></td>
         </tr> 
 
            <tr> 
@@ -367,7 +349,7 @@ if (isset($_GET['pag']))
 
            <tr> 
             <td class='rs_fila_nombrecolumna_form'>Cargar Archivo</td> 
-            <td class='rs_filas_campo_form'><input type='text' id='archivo_act' name='archivo_act' value=''  size='80' maxlength='80'></td>
+            <td class='rs_filas_campo_form'><input type='file' id='archivo_act' name='archivo_act'></td>
         </tr> 
 
            <tr> 
@@ -386,8 +368,16 @@ if (isset($_GET['pag']))
         </tr> 
 
            <tr> 
-            <td class='rs_fila_nombrecolumna_form'>Descripci&oacute;n</td> 
-            <td class='rs_filas_campo_form'><textarea name="descripcion_act" cols="50" rows="10" id="descripcion_act" ></textarea></td>
+            <td class='rs_fila_nombrecolumna_form'>Descripción</td> 
+            <td class='rs_filas_campo_form'><textarea name="descripcion_act" cols="50" rows="10" id="descripcion_act" class="wysiwyggen"></textarea> <?php include("../_UTL/wysiwyg.php"); ?>
+        
+		<script type="text/javascript">
+		$(function(){
+			
+			$('#descripcion_act').elrte(opts);
+
+                            });
+                            </script></td>
            
       </tr> 
 
@@ -436,14 +426,55 @@ if (isset($_GET['pag']))
 			//Inserta o Actualiza un registro en la base de Datos. Dependiendo si la variable $id es mayor a 0 hace una actualizaci&oacute;n, caso contrario una inserci&oacute;n
 			try
 			{
-				$objactividades->nombre_act  = (isset($_POST['nombre_act'])) ? $_POST['nombre_act'] : '';
-			    $objactividades->fechainicio_act  = (isset($_POST['fechainicio_act'])) ? $_POST['fechainicio_act'] : '';
-			    $objactividades->fechafin_act  = (isset($_POST['fechafin_act'])) ? $_POST['fechafin_act'] : '';
-			    $objactividades->archivo_act  = (isset($_POST['archivo_act'])) ? $_POST['archivo_act'] : '';
-			    $objactividades->tipofecha_act  = (isset($_POST['tipofecha_act'])) ? $_POST['tipofecha_act'] : '';
-			    $objactividades->gestion_act  = (isset($_POST['gestion_act'])) ? $_POST['gestion_act'] : '';
-			    $objactividades->activo_act  = (isset($_POST['activo_act'])) ? $_POST['activo_act'] : 'N';
-			    $objactividades->descripcion_act  = (isset($_POST['descripcion_act'])) ? $_POST['descripcion_act'] : '';
+				
+				
+				
+				
+				    // inicio file upload	
+				
+                @mkdir("../archivos_archivo_act");
+                
+                if($_FILES['archivo_act']['name'] !="")
+				{
+					SubirArchivo($_FILES['archivo_act'],"../archivos_archivo_act","8184");
+				}
+
+				if($id > 0)
+				{
+					$objactividades->id_act = $id;
+					$objactividades->ObtenerUnRegistro();
+					if($_FILES['archivo_act']['name'] !="")
+					{ 
+					  $objactividades->archivo_act =  date('Ymd'). '-' . limpiarNombreArchivo($_FILES['archivo_act']['name']);
+					}
+				}
+				else
+				{
+					$objactividades->archivo_act =  date('Ymd'). '-'.limpiarNombreArchivo($_FILES['archivo_act']['name']);	
+				}
+	// fin file upload
+
+				
+				
+				
+				
+				
+				
+					    $objactividades->nombre_act  = (isset($_POST['nombre_act'])) ? $_POST['nombre_act'] : '';
+
+					    $objactividades->fechainicio_act  = (isset($_POST['fechainicio_act'])) ? $_POST['fechainicio_act'] : '';
+
+					    $objactividades->fechafin_act  = (isset($_POST['fechafin_act'])) ? $_POST['fechafin_act'] : '';
+
+				
+					    $objactividades->tipofecha_act  = (isset($_POST['tipofecha_act'])) ? $_POST['tipofecha_act'] : '';
+
+					    $objactividades->gestion_act  = (isset($_POST['gestion_act'])) ? $_POST['gestion_act'] : '';
+
+					    $objactividades->activo_act  = (isset($_POST['activo_act'])) ? $_POST['activo_act'] : 'N';
+
+					    $objactividades->descripcion_act  = (isset($_POST['descripcion_act'])) ? $_POST['descripcion_act'] : '';
+
 
 				$objactividades->usuario_mod = $seguridad->personaid;
 
@@ -535,10 +566,11 @@ if (isset($_GET['pag']))
               <th class='rs_fila_nombrecolumna'>Nombre</th>
               <th class='rs_fila_nombrecolumna'>Fecha Inicio</th>
               <th class='rs_fila_nombrecolumna'>Fecha Fin</th>
-              
+              <th class='rs_fila_nombrecolumna'>Cargar Archivo</th>
+              <th class='rs_fila_nombrecolumna'>Tipo de fecha</th>
               <th class='rs_fila_nombrecolumna'>Gestion</th>
               <th class='rs_fila_nombrecolumna'>Activo</th>
-              
+              <th class='rs_fila_nombrecolumna'>Descripción</th>
             </tr>
             <?php 
             
@@ -562,10 +594,15 @@ if (isset($_GET['pag']))
 
                   	    <td class='rs_filas'><?php echo $userRow["fechafin_act"]; ?></td>
 
-                  	    
+                  	    <td class='rs_filas'><?php echo $userRow["archivo_act"]; ?></td>
+
+                  	    <td class='rs_filas'><?php echo $userRow["tipofecha_act"]; ?></td>
+
                   	    <td class='rs_filas'><?php if(array_key_exists($userRow["gestion_act"],$vfkgestiones)) { echo $vfkgestiones[$userRow["gestion_act"]]; } else { echo  $userRow["gestion_act"];} ?></td>
 
                   	    <td class='rs_filas'><?php if($userRow["activo_act"] == 'S') { echo "<input name='x' type='checkbox' disabled value='x' checked />"; } else { echo "<input name='x' type='checkbox' disabled value='x' />"; } ?></td>
+
+                  	    <td class='rs_filas'><?php echo $userRow["descripcion_act"]; ?></td>
 
                 </tr>
             <?php } ?>
@@ -687,7 +724,7 @@ if (isset($_GET['pag']))
             </tr>
 
 		 	<tr>
-            	<td>Descripciï¿½n</td>
+            	<td>Descripción</td>
             	<td><select name="descripcion_act_relacion" onChange="VaciarValor(this.form, 'descripcion_act_relacion' ,'descripcion_act_valor')">
                 	<option value=""></option>
                     <option value="=" <?php ObtenerSeleccionFiltro("=",$objactividades->filtros[7]); ?> >igual</option>

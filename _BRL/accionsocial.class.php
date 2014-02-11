@@ -3,19 +3,15 @@ include_once("../_DAL/conexion.php");
 include_once("../_UTL/funcionesBRL.php");
 include_once("DataSet.php");
 
-class cactividades
+class caccionsocial
 {
 	 
-	public $id_act;
+	public $id_acs;
 	
-	public $nombre_act;
-	public $fechainicio_act;
-	public $fechafin_act;
-	public $archivo_act;
-	public $tipofecha_act;
-	public $gestion_act;
-	public $activo_act;
-	public $descripcion_act;
+	public $nombre_acs;
+	public $archivo_acs;
+	public $orden_acs;
+	public $activo_acs;
 	public $fechahora_mod;
 	public $fechahora_ins;
 	public $usuario_mod;
@@ -32,16 +28,12 @@ class cactividades
 	
 	public function VaciarVariables()
 	{
-		$this->id_act = "";
+		$this->id_acs = "";
 		
-		$this->nombre_act = "";
-		$this->fechainicio_act = "";
-		$this->fechafin_act = "";
-		$this->archivo_act = "";
-		$this->tipofecha_act = "";
-		$this->gestion_act = "";
-		$this->activo_act = "";
-		$this->descripcion_act = "";
+		$this->nombre_acs = "";
+		$this->archivo_acs = "";
+		$this->orden_acs = "";
+		$this->activo_acs = "";
 		$this->fechahora_mod="";
 		$this->fechahora_ins="";
 		$this->usuario_mod="";
@@ -52,7 +44,7 @@ class cactividades
 	{
   		 try
 		 {
-			$sql = "DELETE FROM smc_actividades WHERE id_act=" . mysql_real_escape_string($this->id_act);
+			$sql = "DELETE FROM smc_accionsocial WHERE id_acs=" . mysql_real_escape_string($this->id_acs);
   			mysql_query($sql);
 			if (mysql_errno()) 
 			{ 
@@ -70,23 +62,15 @@ class cactividades
 	{
 		try
 		 {
-			$sql = "INSERT INTO smc_actividades SET
+			$sql = "INSERT INTO smc_accionsocial SET
 					
-					nombre_act='" . mysql_real_escape_string($this->nombre_act) . "',
+					nombre_acs='" . mysql_real_escape_string($this->nombre_acs) . "',
   
-						fechainicio_act='" . mysql_real_escape_string(date("Y-m-d H:i:s",strtotime($this->fechainicio_act))) . "',
+					archivo_acs='" . mysql_real_escape_string($this->archivo_acs) . "',
   
-						fechafin_act='" . mysql_real_escape_string(date("Y-m-d H:i:s",strtotime($this->fechafin_act))) . "',
+					orden_acs='" . mysql_real_escape_string($this->orden_acs) . "',
   
-					archivo_act='" . mysql_real_escape_string($this->archivo_act) . "',
-  
-					tipofecha_act='" . mysql_real_escape_string($this->tipofecha_act) . "',
-  
-					gestion_act='" . mysql_real_escape_string($this->gestion_act) . "',
-  
-					activo_act='" . mysql_real_escape_string($this->activo_act) . "',
-  
-					descripcion_act='" . ($this->descripcion_act) . "',
+					activo_acs='" . mysql_real_escape_string($this->activo_acs) . "',
   
 					fechahora_mod=now(), 
 					fechahora_ins=now(), 
@@ -94,7 +78,7 @@ class cactividades
 					usuario_ins=" . mysql_real_escape_string($this->usuario_ins) ;
 	
 			mysql_query($sql);
-			$this->id_act = mysql_insert_id();
+			$this->id_acs = mysql_insert_id();
 			
   			if (mysql_errno()) 
 			{ 
@@ -112,28 +96,20 @@ class cactividades
 	{
 		try
 		{
-  			$sql = "UPDATE smc_actividades SET
+  			$sql = "UPDATE smc_accionsocial SET
         			
-						nombre_act='" . mysql_real_escape_string($this->nombre_act) . "',
+						nombre_acs='" . mysql_real_escape_string($this->nombre_acs) . "',
   
-						fechainicio_act='" . mysql_real_escape_string(date("Y-m-d H:i:s",strtotime($this->fechainicio_act))) . "',
+						archivo_acs='" . mysql_real_escape_string($this->archivo_acs) . "',
   
-						fechafin_act='" . mysql_real_escape_string(date("Y-m-d H:i:s",strtotime($this->fechafin_act))) . "',
+						orden_acs='" . mysql_real_escape_string($this->orden_acs) . "',
   
-						archivo_act='" . mysql_real_escape_string($this->archivo_act) . "',
-  
-						tipofecha_act='" . mysql_real_escape_string($this->tipofecha_act) . "',
-  
-						gestion_act='" . mysql_real_escape_string($this->gestion_act) . "',
-  
-						activo_act='" . mysql_real_escape_string($this->activo_act) . "',
-  
-						descripcion_act='" . ($this->descripcion_act) . "',
+						activo_acs='" . mysql_real_escape_string($this->activo_acs) . "',
   
 				fechahora_mod=now(),
 				usuario_mod=" . mysql_real_escape_string($this->usuario_mod) . "
       			WHERE
-        		id_act="   . mysql_real_escape_string($this->id_act);
+        		id_acs="   . mysql_real_escape_string($this->id_acs);
   
 			mysql_query($sql);
 			if (mysql_errno()) 
@@ -151,22 +127,18 @@ class cactividades
   	{
     	try
 		{
-  			$sql = 'SELECT * FROM smc_actividades WHERE id_act=\'' . mysql_real_escape_string($this->id_act)."'";
+  			$sql = 'SELECT * FROM smc_accionsocial WHERE id_acs=\'' . mysql_real_escape_string($this->id_acs)."'";
 			$result = mysql_query($sql);	
 			$c = mysql_num_rows($result);
 			if( $c > 0)
 			{
 				$row = mysql_fetch_array($result);			   		
-				$this->id_act = $row['id_act'];
+				$this->id_acs = $row['id_acs'];
 				
-				$this->nombre_act = $row['nombre_act'];
-				$this->fechainicio_act = $row['fechainicio_act'];
-				$this->fechafin_act = $row['fechafin_act'];
-				$this->archivo_act = $row['archivo_act'];
-				$this->tipofecha_act = $row['tipofecha_act'];
-				$this->gestion_act = $row['gestion_act'];
-				$this->activo_act = $row['activo_act'];
-				$this->descripcion_act = $row['descripcion_act'];
+				$this->nombre_acs = $row['nombre_acs'];
+				$this->archivo_acs = $row['archivo_acs'];
+				$this->orden_acs = $row['orden_acs'];
+				$this->activo_acs = $row['activo_acs'];
 				$this->fechahora_mod = $row['fechahora_mod'];
 				$this->fechahora_ins = $row['fechahora_ins'];
 				$this->usuario_mod = $row['usuario_mod'];
@@ -191,7 +163,7 @@ class cactividades
 	
 	  	 try
 		 {
-			$sql = "DELETE FROM smc_actividades ";
+			$sql = "DELETE FROM smc_accionsocial ";
 
   			$where = ObtenerWhere($this->filtros);
 			
@@ -216,8 +188,8 @@ class cactividades
     {
        try
 	   {
-		    $sql = "SELECT * FROM smc_actividades";
-        	$sql_total = "SELECT count(*) as cantidad_filas FROM smc_actividades"; 
+		    $sql = "SELECT * FROM smc_accionsocial";
+        	$sql_total = "SELECT count(*) as cantidad_filas FROM smc_accionsocial"; 
 			$sql_filtrado = "";
 			$where = array();
 			
@@ -271,8 +243,8 @@ class cactividades
     {
        try
 	   {
-		$sql = "SELECT * FROM smc_actividades";
-        	$sql_total = "SELECT count(*) as cantidad_filas FROM smc_actividades"; 
+		$sql = "SELECT * FROM smc_accionsocial";
+        	$sql_total = "SELECT count(*) as cantidad_filas FROM smc_accionsocial"; 
 		$sql_filtrado = "";
 		$where = array();
 			
@@ -290,8 +262,9 @@ class cactividades
 		{
 			$pag_ini = ($pag-1)*20;
 		}
+		$sql .= " ORDER BY orden_acs";
 		$sql_filtrado = $sql;
-		$sql .=  " LIMIT ".$pag_ini.",20";
+		$sql_filtrado .=  " LIMIT ".$pag_ini.",20";
 			
 			//registros
 			if($todos == 'N')
@@ -301,7 +274,6 @@ class cactividades
 			{
 				$rs = mysql_query($sql_filtrado);
 			}
-			
 			//total_regsitros
 			$rs_total = mysql_query($sql_total);
 			$total_filas =  mysql_result($rs_total, 0, "cantidad_filas"); ;
@@ -317,7 +289,7 @@ class cactividades
                             $row = mysql_fetch_assoc($rs);
 
                             do{
-                                $res[$row["id_act"]] = $row;
+                                $res[$row["id_acs"]] = $row;
                             }while($row = mysql_fetch_assoc($rs));
                         }
                         $this->totalfilas = $total_filas;

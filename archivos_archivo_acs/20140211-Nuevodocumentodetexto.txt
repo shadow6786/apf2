@@ -1,0 +1,11 @@
+$mysql_host = "mysql5.000webhost.com";
+$mysql_database = "a1692580_bdapf2";
+$mysql_user = "a1692580_admin2";
+$mysql_password = "shadow6786";
+
+
+$('<div/>', {
+    id: someID,
+    className: 'foobar',
+    html: content
+});

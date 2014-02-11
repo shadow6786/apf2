@@ -27,7 +27,7 @@ if(isset($_GET["gestion"]))
 			$archivo = "";
 			if(!is_null($row["archivo_act"]) && $row["archivo_act"] != "")
 			{
-				$archivo ="<a href='". $row["archivo_act"]."' target='_blank'>Ver archivo</a>";
+				$archivo ="<a href='../archivos_archivo_act/". $row["archivo_act"]."' target='_blank'>Ver archivo</a>";
 			}
 			else {
 				$archivo = "Sin archivo";

@@ -1,7 +1,7 @@
 <?php
-require_once("circulares.class.php");
+require_once("accionsocial.class.php");
 
-class ccirculares_ext extends ccirculares
+class caccionsocial_ext extends caccionsocial
 {
 	public function __construct()
     {
@@ -19,79 +19,7 @@ class ccirculares_ext extends ccirculares
 			$var["nombrevariable"];
 		*/
 		
-		$sql = "SELECT * FROM smc_circulares";
-   		$rs = mysql_query($sql);
-		$total_filas = mysql_num_rows($rs);
-			
-                        $res = array();
-                        
-                        if($total_filas > 0)
-                        {
-                            $row = mysql_fetch_assoc($rs);
-
-                            do{
-                                $res[] = $row;
-                            }while($row = mysql_fetch_assoc($rs));
-                        }
-                        $this->totalfilas = $total_filas;
-                        $this->totalfilasfiltradas = $total_filas;
-                        
-                        return $res;
-                        
-            if ($total_filas == 0) 
-			{ 
-				throw new Exception("no hay regsitros"); 
-   			}
-			
-	   }
-	   catch(Exception $e)
-	   {
-		   throw $e;
-	   }
-    }
-
-    public function get_circulares_tipo($var)
-    {
-       try
-	   {
-
-		$sql = "SELECT *
-		FROM smc_circulares where tipocircular_crc = ".$var;
-   		$rs = mysql_query($sql);
-		$total_filas = mysql_num_rows($rs);
-			
-                        $res = array();
-                        
-                        if($total_filas > 0)
-                        {
-                            $row = mysql_fetch_assoc($rs);
-
-                            do{
-                                $res[] = $row;
-                            }while($row = mysql_fetch_assoc($rs));
-                        }
-                        $this->totalfilas = $total_filas;
-                        $this->totalfilasfiltradas = $total_filas;
-                        
-                        return $res;
-                        
-            if ($total_filas == 0) 
-			{ 
-				throw new Exception("no hay regsitros"); 
-   			}
-			
-	   }
-	   catch(Exception $e)
-	   {
-		   throw $e;
-	   }
-    }
-
-    public function get_circulares_gestion_tipo($gestion,$tipo)
-    {
-    	try{
-    	$sql = "SELECT *
-FROM smc_circulares where gestion_crc = ".$gestion." and tipocircular_crc = ".$tipo;
+		$sql = "SELECT * FROM smc_accionsocial";
    		$rs = mysql_query($sql);
 		$total_filas = mysql_num_rows($rs);
 			
@@ -127,8 +55,8 @@ FROM smc_circulares where gestion_crc = ".$gestion." and tipocircular_crc = ".$t
     {
        try
 	   {
-		$sql = "SELECT * FROM smc_circulares";
-        	$sql_total = "SELECT count(*) as cantidad_filas FROM smc_circulares"; 
+		$sql = "SELECT * FROM smc_accionsocial";
+        	$sql_total = "SELECT count(*) as cantidad_filas FROM smc_accionsocial"; 
 		$sql_filtrado = "";
 		$where = array();
 			
@@ -173,7 +101,7 @@ FROM smc_circulares where gestion_crc = ".$gestion." and tipocircular_crc = ".$t
                             $row = mysql_fetch_assoc($rs);
 
                             do{
-                                $res[$row["id_crc"]] = $row;
+                                $res[$row["id_acs"]] = $row;
                             }while($row = mysql_fetch_assoc($rs));
                         }
                         $this->totalfilas = $total_filas;
