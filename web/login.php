@@ -100,7 +100,7 @@ if ($nombre != "")
 				<h3 class="no-space">Bienvenido <?php echo $seguridad->nombre;?></h3>
 				<div>
 					<?php if($seguridad->rol){
-						echo 'Haga click <a href="../frameset.php" target="_blank">aqui</a> para dirigirse al panel de control del systema';
+						echo 'Haga click <a href="../frameset.php" target="_blank">aqui</a> para dirigirse al panel de control del sistema';
 					} ?>
 				</div>
 				<?php
