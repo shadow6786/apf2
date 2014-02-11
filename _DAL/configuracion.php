@@ -34,22 +34,23 @@ class configuracion
 		$this->basededatos = "phpexper_db";
 		$this->persistencia = false;
 		*/
-		/*
+		
 		//Server APF
 		$this->servidor = "mysql5.000webhost.com";
 		$this->usuario = "a1692580_admin2";
 		$this->clave = "shadow6786";
 		$this->basededatos = "a1692580_bdapf2";
 		$this->persistencia = false;
-		*/
+		
 		
 		// Localhost
+		/*
 		$this->servidor = "localhost";
 		$this->usuario = "root";
 		$this->clave = "";
 		$this->basededatos = "apf_bd";
 		$this->persistencia = false;
-		
+		*/
 		//Variables de empresa
  		$this->nombre_empresa = "APF";
 
